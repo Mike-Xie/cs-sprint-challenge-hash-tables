@@ -1,7 +1,29 @@
-def get_indices_of_item_weights(weights, length, limit):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+from typing import Tuple, List 
+Answer = Tuple[int, int]
 
-    return None
+"""
+We add keys using setdefault since we want to keep the oldest key, doing 
+regular enumerate will over write with the newest one for duplicates
+
+Also, since we want the biggest index first and tuples are immutable,
+have to sort with reverse = True and then cast as a tuple 
+"""
+
+def get_indices_of_item_weights(weights: List[int], length: int, limit: int) -> Answer:
+	# fail on list shorter than 2 
+	if length <= 1:
+		return None
+	# empty dict 
+	index_map = {}
+	for index_one, n in enumerate(weights):
+		m = limit - n
+		try:
+			index_two = index_map[m]
+		except KeyError:
+			index_map.setdefault(n, index_one)
+		else:
+			return tuple(sorted([index_one, index_two], reverse=True))
+
+weights_2 = [4, 4, 4]
+answer_2 = get_indices_of_item_weights(weights_2, 3, 8)
+print(answer_2)

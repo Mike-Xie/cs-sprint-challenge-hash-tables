@@ -1,12 +1,14 @@
-def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
-
-    return result
-
-
+from typing import List
+from collections import Counter
+# assume inputs lists are sets without duplicate
+def intersection(arrays: List[int]) -> List[int]:
+    num_sets = len(arrays)
+    # flatten list 
+    flat_list = [item for sublist in arrays for item in sublist]
+    counter_dict = Counter(flat_list)
+    # newDict = dict(filter(lambda elem: elem[1] == num_sets, counter_dict.items()))
+    newDict = {k:v for k,v in counter_dict.items() if v == num_sets}
+    return(newDict)
 if __name__ == "__main__":
     arrays = []
 
