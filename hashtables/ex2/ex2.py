@@ -1,14 +1,11 @@
 from typing import List
-
 # First ticket is None, Something
 # Last ticket is Something, None 
-
 
 class Ticket:
     def __init__(self, source: str, destination: str):
         self.source = source
         self.destination = destination
-
 
 def reconstruct_trip(tickets: List[Ticket], length: int) -> List[str]:
     route_dict = {}
@@ -21,9 +18,6 @@ def reconstruct_trip(tickets: List[Ticket], length: int) -> List[str]:
     	route_list.append(curr_stop)
     return(route_list)
     
-
-
-
 ticket_1 = Ticket("NONE", "PDX")
 ticket_2 = Ticket("PDX", "DCA")
 ticket_3 = Ticket("DCA", "NONE")
