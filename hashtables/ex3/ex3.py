@@ -8,7 +8,7 @@ def intersection(arrays: List[int]) -> List[int]:
     counter_dict = Counter(flat_list)
     # newDict = dict(filter(lambda elem: elem[1] == num_sets, counter_dict.items()))
     newDict = {k:v for k,v in counter_dict.items() if v == num_sets}
-    return(newDict)
+    return(newDict.keys())
 if __name__ == "__main__":
     arrays = []
 
