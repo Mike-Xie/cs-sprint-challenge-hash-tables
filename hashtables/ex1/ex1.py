@@ -5,6 +5,8 @@ Answer = Tuple[int, int]
 We add keys using setdefault since we want to keep the oldest key, doing 
 regular enumerate will over write with the newest one for duplicates
 
+Also, since we want the biggest index first and tuples are immutable,
+have to sort with reverse = True and then cast as a tuple 
 """
 
 def get_indices_of_item_weights(weights: List[int], length: int, limit: int) -> Answer:
@@ -14,7 +16,6 @@ def get_indices_of_item_weights(weights: List[int], length: int, limit: int) -> 
 	# empty dict 
 	index_map = {}
 	for index_one, n in enumerate(weights):
-
 		m = limit - n
 		try:
 			index_two = index_map[m]
